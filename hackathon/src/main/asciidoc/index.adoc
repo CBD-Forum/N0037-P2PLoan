@@ -1,0 +1,113 @@
+= RESTful Origin News API Guide
+BlockChainLab;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+= Introduction
+
+RESTful Original News is a RESTful web service for storing News in blockchain. It uses hypermedia
+to describe the relationships between resources and to allow navigation between them.
+
+[getting-started]
+= Getting started
+
+
+
+[getting-started-running-the-service]
+== Running the service
+RESTful Notes is written using http://projects.spring.io/spring-boot[Spring Boot] which
+makes it easy to get it up and running so that you can start exploring the REST API.
+
+The first step is to clone the Git repository:
+
+[source,bash]
+----
+$ git clone https://github.com/bxliu/hackathon
+----
+
+Once the clone is complete, you're ready to get the service up and running:
+
+[source,bash]
+----
+$ cd OriginalNews
+$ ./mvn clean package
+$ java -jar target/*.jar
+----
+
+You can check that the service is up and running by executing a simple request using
+cURL:
+
+include::{snippets}/index/1/curl-request.adoc[]
+
+This request should yield the following response in the
+http://stateless.co/hal_specification.html[Hypertext Application Language (HAL)] format:
+
+include::{snippets}/index/1/http-response.adoc[]
+
+Note the `_links` in the JSON response. They are key to navigating the API.
+
+
+
+[getting-started-creating-a-site]
+== Creating a site
+Now that you've started the service and verified that it works, the next step is to use
+it to create a new site. As you saw above, the URI for working with sites is included as
+a link when you perform a `GET` request against the `sites` link of the service:
+
+include::{snippets}/index/1/http-response.adoc[]
+
+To create a site, you need to execute a `POST` request to this URI including a JSON
+payload containing the title and body of the note:
+
+include::{snippets}/creating-a-site/1/curl-request.adoc[]
+
+The response from this request should have a status code of `201 Created` and contain a
+`Location` header whose value is the URI of the newly created note:
+
+include::{snippets}/creating-a-site/1/http-response.adoc[]
+
+To work with the newly created note you use the URI in the `Location` header. For example,
+you can access the note's details by performing a `GET` request:
+
+include::{snippets}/creating-a-site/2/curl-request.adoc[]
+
+This request will produce a response with the note's details in its body:
+
+include::{snippets}/creating-a-site/2/http-response.adoc[]
+
+Note the `news` link which we'll make use of later.
+
+
+
+[getting-started-creating-a-news]
+== Creating news
+Creating news associated with generated site.
+
+Referring back to the response for the service's index, the URI for working with news is
+include as a link:
+
+include::{snippets}/index/1/http-response.adoc[]
+
+To create news you need to execute a `POST` request to this URI, including a JSON
+payload containing these necessary properties of the news:
+
+include::{snippets}/creating-a-site/3/curl-request.adoc[]
+
+The response from this request should have a status code of `201 Created` and contain a
+`Location` header whose value is the URI of the newly created news:
+
+include::{snippets}/creating-a-site/3/http-response.adoc[]
+
+To work with the newly created news you use the URI in the `Location` header. For example
+you can access the news' details by performing a `GET` request:
+
+include::{snippets}/creating-a-site/4/curl-request.adoc[]
+
+This request will produce a response with the news' details in its body:
+
+include::{snippets}/creating-a-site/4/http-response.adoc[]
