@@ -1,0 +1,166 @@
+
+
+
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>社会工作</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+      </head>
+      <body>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>陈志敏的社会工作</h5>
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                  </a>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">Config option 1</a>
+                    </li>
+                    <li><a href="#">Config option 2</a>
+                    </li>
+                  </ul>
+                  <a class="close-link">
+                    <i class="fa fa-times"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="ibox-content">
+
+                <div class="table-responsive">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>社会工作</th>
+              <th>简介</th>
+              <th>管理员确认</th>
+              <th>教师确认</th>
+              <th>年度</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              <tr>
+                <td>123</td>
+                <td>123</td>
+                <td>false</td>
+                <td>true</td>
+                <td>2017年</td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">修改</button>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/delete?Id=5" role="button">删除</a>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/confirm?Id=5" role="button">确认/取消</a>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td>2342</td>
+                <td>234</td>
+                <td>false</td>
+                <td>true</td>
+                <td>2017年</td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">修改</button>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/delete?Id=6" role="button">删除</a>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/confirm?Id=6" role="button">确认/取消</a>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td>345</td>
+                <td>345</td>
+                <td>false</td>
+                <td>true</td>
+                <td>2017年</td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">修改</button>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/delete?Id=7" role="button">删除</a>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/confirm?Id=7" role="button">确认/取消</a>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td>456</td>
+                <td>456</td>
+                <td>false</td>
+                <td>true</td>
+                <td>2017年</td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-work-content="456">修改</button>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/delete?Id=8" role="button">删除</a>
+                  <a class="btn btn-default btn-xs" href="/data/socialWork/confirm?Id=8" role="button">确认/取消</a>
+
+                </td>
+              </tr>
+
+            <tr><form action="/data/socialWork/add">
+              <td colspan="5">
+                工作内容<input type="text" name="socialWork"> 说明<input type="text" name="description">
+              </td>
+              <td><input type="submit" name="新增" class="btn btn-default btn-xs"></td>
+            </form>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+      <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+              <i class="fa fa-laptop modal-icon"></i>
+              <h4 class="modal-title">修改数据</h4>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="workId" name="id" />
+              <div class="form-group"><label>工作内容</label> <input type="text" id="workContent" name="workContent" placeholder="" class="form-control"></div>
+              <div class="form-group"><label>说明</label> <input type="text" id="workDescription" name="workDescription" placeholder="" class="form-control"></div>
+              <div class="form-group"><label>年度</label> <input type="text" value="2017年"  class="form-control"  readonly></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-white" data-dismiss="modal">修改</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script>
+$('#myModal').on('show.bs.modal', function(e) {
+    //get data-id attribute of the clicked element
+    var workContent = $(e.relatedTarget).data('work-content');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="workContent"]').val(workContent);
+});
+
+</script>
+    </body>
+  </html>

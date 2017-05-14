@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">区块链借贷</h1>
+
+        </div>
+        <h3>立即登录</h3>
+        <p>
+            <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+        </p>
+        <p>Login in. To see it in action.</p>
+        <form class="m-t" role="form" action="index.html">
+            <div class="form-group">
+                <input id="UserName" type="email" class="form-control" placeholder="Username" required="">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <input id="PassWord" type="password" class="form-control" placeholder="Password" required="">
+                <span></span>
+            </div>
+            <a class="btn btn-primary block full-width m-b" id="loginjudge">Login</a>
+
+
+            <!-- <a href="#"><small>Forgot password?</small></a> -->
+            <p class="text-muted text-center">
+                <small>Do not have an account?</small>
+            </p>
+            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+        </form>
+        <p class="m-t">
+            <small> &copy; </small>
+        </p>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+    //关键的代码
+    $("#loginjudge").click(function () {
+        var dat = JSON.stringify({
+            username: $('#UserName').val(),
+            password: $('#PassWord').val()
+        });
+        if ($('#UserName').val().length == 0) {
+            $("#UserName").next("span").css("color", "red").text("用户名不为空");
+        }
+        else {
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/login/login/check",
+                data: dat,
+                contentType: 'application/json',
+                dataType: 'text',
+                success: function (result) {
+                    if (result == "success") {
+                        window.location.href = "userList.html?UserName=" + $('#UserName').val().toString();
+                    }
+                    else if (result == "failed") {
+                        $("#PassWord").next("span").css("color", "red").text("用户名密码错误");
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
